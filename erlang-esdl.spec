@@ -1,10 +1,10 @@
 %define oname esdl
-%define erlangdir %{_libdir}/erlang-R11B
+%define erlang_libdir %{_libdir}/erlang/lib
 
 Summary:        Erlang OpenGL/SDL api and utilities
 Name:           erlang-%{oname}
 Version:        0.96.0626
-Release:        %mkrel 1
+Release:        %mkrel 2
 Group:          Development/Other
 License:        BSD
 URL:            http://esdl.sourceforge.net
@@ -30,38 +30,37 @@ Development files for ESDL.
 %prep
 %setup -qn %{oname}-%{version}
 perl -pi -e 's|INSTALLDIR = |INSTALLDIR = \$(DESTDIR)|' Makefile
-perl -pi -e 's|^ERL_DIR.*|ERL_DIR:=%{erlangdir}|' Makefile
+#perl -pi -e 's|^ERL_DIR.*|ERL_DIR:=%{erlang_libdir}|' Makefile
 
 %build
 %make
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}%{erlangdir}/lib
+mkdir -p %{buildroot}%{erlang_libdir}
 
 %makeinstall_std
-rm -rf  %{buildroot}%{erlangdir}/lib/esdl-%{version}/c_src
+rm -rf  %{buildroot}%{erlang_libdir}/esdl-%{version}/c_src
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)
-%doc %{erlangdir}/lib/esdl-%{version}/license.terms
-%doc %{erlangdir}/lib/esdl-%{version}/Readme*
-%dir %{erlangdir}/lib/esdl-%{version}
-%dir %{erlangdir}/lib/esdl-%{version}/ebin
-%dir %{erlangdir}/lib/esdl-%{version}/priv
-%attr(755,root,root) %{erlangdir}/lib/esdl-%{version}/priv/*.so
-%{erlangdir}/lib/esdl-%{version}/ebin/*.beam
-%{erlangdir}/lib/esdl-%{version}/vsn
-%exclude %{erlangdir}/lib/esdl-%{version}/include
-%exclude %{erlangdir}/lib/esdl-%{version}/src
+%doc %{erlang_libdir}/esdl-%{version}/license.terms
+%doc %{erlang_libdir}/esdl-%{version}/Readme
+%dir %{erlang_libdir}/esdl-%{version}
+%dir %{erlang_libdir}/esdl-%{version}/ebin
+%dir %{erlang_libdir}/esdl-%{version}/priv
+%attr(755,root,root) %{erlang_libdir}/esdl-%{version}/priv/*.so
+%{erlang_libdir}/esdl-%{version}/ebin/*.beam
+%{erlang_libdir}/esdl-%{version}/vsn
+%exclude %{erlang_libdir}/esdl-%{version}/include
+%exclude %{erlang_libdir}/esdl-%{version}/src
+%exclude %{erlang_libdir}/esdl-%{version}/Readme.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc %{erlangdir}/lib/esdl-%{version}/doc
-%{erlangdir}/lib/esdl-%{version}/include
-%{erlangdir}/lib/esdl-%{version}/src
-
-
+%doc %{erlang_libdir}/esdl-%{version}/doc
+%{erlang_libdir}/esdl-%{version}/include
+%{erlang_libdir}/esdl-%{version}/src
