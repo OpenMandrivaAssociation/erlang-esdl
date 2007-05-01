@@ -4,15 +4,16 @@
 Summary:        Erlang OpenGL/SDL api and utilities
 Name:           erlang-%{oname}
 Version:        0.96.0626
-Release:        %mkrel 3
+Release:        %mkrel 4
 Group:          Development/Other
 License:        BSD
 URL:            http://esdl.sourceforge.net
 Source:		http://download.sourceforge.net/esdl/%{oname}-%{version}.src.tar.bz2
 BuildRequires:  SDL-devel
 BuildRequires:	mesa-common-devel
-BuildRequires:	erlang-compiler = R11B
-BuildRequires:	erlang-devel = R11B
+BuildRequires:	erlang-compiler		>= R11B-6
+BuildRequires:	erlang-devel		>= R11B-6
+Requires:	erlang-base		>= R11B-6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
@@ -23,6 +24,10 @@ your Erlang program.
 Summary:	Development files for ESDL
 Group:          Development/Other
 Requires:	%{name} = %{version}-%{release}
+Requires:	erlang-devel >= R11B.6
+Requires:	SDL-devel
+Requires:	libGL-devel
+Requires:	libGLU-devel
 
 %description devel
 Development files for ESDL.
@@ -30,7 +35,6 @@ Development files for ESDL.
 %prep
 %setup -qn %{oname}-%{version}
 perl -pi -e 's|INSTALLDIR = |INSTALLDIR = \$(DESTDIR)|' Makefile
-#perl -pi -e 's|^ERL_DIR.*|ERL_DIR:=%{erlang_libdir}|' Makefile
 
 %build
 %make
