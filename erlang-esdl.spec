@@ -4,7 +4,7 @@
 Summary:        Erlang OpenGL/SDL api and utilities
 Name:           erlang-%{oname}
 Version:        0.96.0626
-Release:        %mkrel 5
+Release:        %mkrel 6
 Group:          Development/Other
 License:        BSD
 URL:            http://esdl.sourceforge.net
@@ -26,8 +26,7 @@ Group:          Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	erlang-devel >= R11B-6
 Requires:	SDL-devel
-Requires:	libGL-devel
-Requires:	libGLU-devel
+Requires:	mesa-common-devel
 
 %description devel
 Development files for ESDL.
