@@ -11,9 +11,9 @@ URL:            http://esdl.sourceforge.net
 Source:		http://download.sourceforge.net/esdl/%{oname}-%{version}.src.tar.bz2
 BuildRequires:  SDL-devel
 BuildRequires:	mesa-common-devel
-BuildRequires:	erlang-compiler		>= R11B-6
-BuildRequires:	erlang-devel		>= R11B-6
-Requires:	erlang-base		>= R11B-6
+BuildRequires:	erlang-compiler		>= R11B-7
+BuildRequires:	erlang-devel		>= R11B-7
+Requires:	erlang-base		>= R11B-7
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
