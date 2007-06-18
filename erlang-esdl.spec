@@ -4,11 +4,12 @@
 Summary:        Erlang OpenGL/SDL api and utilities
 Name:           erlang-%{oname}
 Version:        0.96.0626
-Release:        %mkrel 7
+Release:        %mkrel 8
 Group:          Development/Other
 License:        BSD
 URL:            http://esdl.sourceforge.net
 Source:		http://download.sourceforge.net/esdl/%{oname}-%{version}.src.tar.bz2
+Patch0:		%{oname}-0.96.0626-optflags.patch
 BuildRequires:  SDL-devel
 BuildRequires:	mesa-common-devel
 BuildRequires:	erlang-compiler		>= R11B-7
@@ -33,17 +34,26 @@ Development files for ESDL.
 
 %prep
 %setup -qn %{oname}-%{version}
+%patch0 -p1
+
 perl -pi -e 's|INSTALLDIR = |INSTALLDIR = \$(DESTDIR)|' Makefile
 
 %build
+export CFLAGS="%{optflags}"
 %make
+pushd test
+%make
+popd
 
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{erlang_libdir}
 
 %makeinstall_std
-rm -rf  %{buildroot}%{erlang_libdir}/esdl-%{version}/c_src
+
+pushd test
+mv -f *.beam %{buildroot}%{erlang_libdir}/esdl-%{version}/ebin
+popd
 
 %clean
 rm -rf %{buildroot}
@@ -67,3 +77,4 @@ rm -rf %{buildroot}
 %doc %{erlang_libdir}/esdl-%{version}/doc
 %{erlang_libdir}/esdl-%{version}/include
 %{erlang_libdir}/esdl-%{version}/src
+%{erlang_libdir}/esdl-%{version}/c_src
