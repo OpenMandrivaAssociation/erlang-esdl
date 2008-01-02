@@ -15,6 +15,7 @@ BuildRequires:	mesa-common-devel
 BuildRequires:	erlang-compiler		>= R11B-7
 BuildRequires:	erlang-devel		>= R11B-7
 Requires:	erlang-base		>= R11B-7
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 A library that gives you access to SDL and OpenGL functionality in
