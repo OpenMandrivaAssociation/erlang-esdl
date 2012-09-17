@@ -3,12 +3,12 @@
 
 Summary:        Erlang OpenGL/SDL api and utilities
 Name:           erlang-%{oname}
-Version:        1.0.1
-Release:        %mkrel 3
+Version:        1.2
+Release:        %mkrel 1
 Group:          Development/Other
 License:        BSD
 URL:            http://esdl.sourceforge.net
-Source:		http://download.sourceforge.net/esdl/%{oname}-%{version}.src.tar.bz2
+Source0:	http://downloads.sourceforge.net/project/esdl/esdl/%{oname}-%{version}/%{oname}-%{version}.src.tar.gz
 Patch0:		esdl-1.0.1-optflags.patch
 Patch1:		esdl-1.0.1-makefile.patch
 BuildRequires:  SDL-devel
@@ -18,7 +18,6 @@ BuildRequires:	mesa-common-devel
 BuildRequires:	erlang-compiler		>= R11B-7
 BuildRequires:	erlang-devel		>= R11B-7
 Requires:	erlang-base		>= R11B-7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 A library that gives you access to SDL and OpenGL functionality in
@@ -37,7 +36,8 @@ Development files for ESDL.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch0 -p1
+#% patch0 -p1
+
 %patch1 -p1
 
 perl -pi -e 's|INSTALLDIR = |INSTALLDIR = \$(DESTDIR)|' Makefile
@@ -49,16 +49,11 @@ export CLINKFLAGS="%{ldflags}"
 %make
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
 
 pushd test
 mv -f *.beam %{buildroot}%{erlang_libdir}/esdl-%{version}/ebin
 popd
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)
