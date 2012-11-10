@@ -1,0 +1,14 @@
+diff -Naur esdl-1.0.1/Makefile esdl-1.0.1.tpg/Makefile
+--- esdl-1.0.1/Makefile	2009-05-20 18:34:47.000000000 +0000
++++ esdl-1.0.1.tpg/Makefile	2009-06-15 19:09:01.000000000 +0000
+@@ -11,8 +11,8 @@
+ 
+ # Include SDL_ttf and SDL_image support (yes/no)?
+ # See c_src/Makefile for include paths etc.
+-ENABLE_SDL_TTF = no
+-ENABLE_SDL_IMAGE = no
++ENABLE_SDL_TTF = yes
++ENABLE_SDL_IMAGE = yes
+ 
+ TAR = tar
+ 
