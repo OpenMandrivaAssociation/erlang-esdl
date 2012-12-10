@@ -1,13 +1,13 @@
 %define oname esdl
 %define erlang_libdir %{_libdir}/erlang/addons
 
-Summary:        Erlang OpenGL/SDL api and utilities
-Name:           erlang-%{oname}
-Version:        1.2
-Release:        %mkrel 1
-Group:          Development/Other
-License:        BSD
-URL:            http://esdl.sourceforge.net
+Summary:	Erlang OpenGL/SDL api and utilities
+Name:		erlang-%{oname}
+Version:	1.2
+Release:	2
+Group:		Development/Other
+License:	BSD
+URL:		http://esdl.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/esdl/esdl/%{oname}-%{version}/%{oname}-%{version}.src.tar.gz
 Patch0:		esdl-1.0.1-optflags.patch
 Patch1:		esdl-1.0.1-makefile.patch
@@ -25,7 +25,7 @@ your Erlang program.
 
 %package devel
 Summary:	Development files for ESDL
-Group:          Development/Other
+Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	erlang-devel >= R11B-6
 Requires:	SDL-devel
@@ -55,6 +55,9 @@ pushd test
 mv -f *.beam %{buildroot}%{erlang_libdir}/esdl-%{version}/ebin
 popd
 
+rm -f %{buildroot}%{erlang_libdir}/esdl-%{version}/Readme.MacOSX-Cocoa
+rm -f %{buildroot}%{erlang_libdir}/esdl-%{version}/Readme.win32
+
 %files
 %defattr(644,root,root,755)
 %doc %{erlang_libdir}/esdl-%{version}/license.terms
@@ -67,7 +70,6 @@ popd
 %{erlang_libdir}/esdl-%{version}/vsn.mk
 %exclude %{erlang_libdir}/esdl-%{version}/include
 %exclude %{erlang_libdir}/esdl-%{version}/src
-%exclude %{erlang_libdir}/esdl-%{version}/Readme.*
 
 %files devel
 %defattr(644,root,root,755)
