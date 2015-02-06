@@ -4,7 +4,7 @@
 Summary:	Erlang OpenGL/SDL api and utilities
 Name:		erlang-%{oname}
 Version:	1.2
-Release:	2
+Release:	3
 Group:		Development/Other
 License:	BSD
 URL:		http://esdl.sourceforge.net
