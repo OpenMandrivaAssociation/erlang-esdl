@@ -7,7 +7,7 @@ Version:	1.2
 Release:	3
 Group:		Development/Other
 License:	BSD
-URL:		http://esdl.sourceforge.net
+URL:		https://esdl.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/esdl/esdl/%{oname}-%{version}/%{oname}-%{version}.src.tar.gz
 Patch0:		esdl-1.0.1-optflags.patch
 Patch1:		esdl-1.0.1-makefile.patch
