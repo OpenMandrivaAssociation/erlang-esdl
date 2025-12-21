@@ -11,6 +11,7 @@ URL:		https://esdl.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/esdl/esdl/%{oname}-%{version}/%{oname}-%{version}.src.tar.gz
 Patch0:		esdl-1.0.1-optflags.patch
 Patch1:		esdl-1.0.1-makefile.patch
+BuildRequires:	make
 BuildRequires:  SDL-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_image-devel
